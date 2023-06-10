@@ -1,0 +1,15 @@
+<h1>New article</h1>
+
+<%= render "form", article: @article %>
+
+<br>
+
+<div>
+  <%= link_to "Back to articles", articles_path %>
+</div>
+
+<h3> Importez les fichiers en format csv avec en-tete </h3>
+   <%= form_with url: import_articles_path , method: :post do |f| %>
+    <%=f.file_field :file, accept: '.csv' %>
+    <%= f.submit 'Import' %>
+    <%end%>

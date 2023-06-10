@@ -1,0 +1,32 @@
+<h1>Database</h1>
+
+     <%= link_to 'Créez de nouveuax articles ', new_article_path, class:"btn btn-secondary"%>
+
+     <%= link_to 'Créez de nouvelles catégoris', new_category_path, class:"btn btn-secondary"%>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Article</th>
+        <th>Price (Local)</th>
+        <th>Price (Export)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <% category.articles.each do |article| %>
+          <tr>
+            <% if article == category.articles.first %>
+              <td rowspan="<%= category.articles.size %>"><%= category.name %></td>
+            <% end %>
+            <td><%= article.name %></td>
+            <td><%= article.price_local %> €</td>
+            <td><%= article.price_export %>€</td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
